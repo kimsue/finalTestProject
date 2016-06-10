@@ -1,15 +1,12 @@
 Session.setDefault('sList');
-$(document).ready(function(){
-  pice = 0;
-});
-var price = 0;
-Template.body.events({
+price = 0;
+
+Template.AMarket.events({
   'click #search':function (event) {
     var topic =$('#topic').val();
     Meteor.call('getshoppingList', topic, function (err, result) {
       var list=result.channel.item;
       Session.set('sList',list);
-      console.log(list);
     })
   },
   'click input' : function(event){
@@ -28,7 +25,7 @@ Template.body.events({
       console.log(Session.get("price"));
   }
 });
-Template.body.helpers({
+Template.AMarket.helpers({
 
   sList:function () {
     var list = Session.get('sList');

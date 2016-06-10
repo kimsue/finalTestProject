@@ -1,0 +1,18 @@
+<template name="AMarket">
+    <h1>Daum Shopping Search</h1>
+    <input id="topic" type="text" placeholder="입력하세용">
+    <button id="search">검색하기</button>
+    {{#each sList}}
+        <tr>
+            <!--// 이전페이지에서 받은 코드-->
+            <td>
+                <input type="checkbox" id="del_id" name="del_unit[]" value="{{title}},가격 : {{price_max}}">
+                {{title}}
+                <span>가격 : {{price_max}}</span>
+            </td>
+            <!--//이 체크박스가 for문에 의해서 여러개 생성-->
+        </tr>
+    {{/each}}
+
+    <button id="checkNext">확인</button>
+</template>
