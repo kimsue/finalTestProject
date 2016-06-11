@@ -1,15 +1,27 @@
 <template name="layout">
-    <h1>MARKET</h1>
 
-    <a href="{{pathFor 'logo'}}">logo</a>
-    <a href="{{pathFor 'checklist'}}">checklist</a>
-    <a href="{{pathFor 'calculate'}}">calculate</a>
-    <a href="{{pathFor 'productlist'}}">productlist</a>
-    <a href="{{pathFor 'AMarket'}}">AMarket</a>
+    <div class="container">
+        <div class="masthead">
+            <nav>
+                <ul class="nav nav-justified">
+                    <li class="active"><a href="{{pathFor 'home'}}">Home</a></li>
+                    <li><a href="{{pathFor 'productlist'}}">ProductList</a></li>
+                    <li><a href="{{pathFor 'AMarket'}}">Market</a></li>
+                    <li><a href="#">About</a></li>
 
-    <a href="/">return to home!</a>
+                </ul>
+            </nav>
+        </div>
+        {{> yield}}
+        <!-- Site footer -->
+        <footer class="footer">
+            <p>&copy; KSY&SHS 2016</p>
+        </footer>
 
-    {{> yield}}
+    </div> <!-- /container -->
 
-    <p>Copyright 2016 sy & hs all right reserved.</p>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
 </template>

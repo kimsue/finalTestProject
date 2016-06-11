@@ -2,10 +2,16 @@ shop = new Mongo.Collection("shop");
 
 Meteor.methods({
     getshoppingList: function (topic) {
-        console.log('Topic:'+topic);
         var url="https://apis.daum.net/shopping/search?apikey=ca1f8881026d7bdc1fbe206dbe26b4f3&result=20&pageno=3&sort=min_price&output=json&q="+topic;
         var result =HTTP.get(url).data;
-        return result;
+        var finalObj = [];
+        var data = result.channel.item;
+        for(var a in data){
+            var url = "https://apis.daum.net/shopping/detail?apikey=ca1f8881026d7bdc1fbe206dbe26b4f3&docid="+ data[a].docid +"&output=json";
+            console.log(url);
+            //finalObj.push(HTTP.get(url).data);
+        };
+        return finalObj;
     }
 });
 

@@ -1,22 +1,35 @@
 Session.setDefault('sList');
-price = 0;
+var price = 0;
 
 Template.AMarket.events({
-  'click #search':function (event) {
-    var topic =$('#topic').val();
-    Meteor.call('getshoppingList', topic, function (err, result) {
-      var list=result.channel.item;
-      Session.set('sList',list);
-    })
+  'keyup #topic':function (event) {
+    if(event.which == 13){
+      var topic =$('#topic').val();
+      console.log(topic);
+      Meteor.call('getshoppingList', topic, function (err, result) {
+        var list = [];
+        for(var a in result){
+          list.push({
+            brand : result[a].channel.item[0].brand,
+            image_url : result[a].channel.item[0].image_url,
+            title : result[a].channel.item[0].title,
+            price : result[a].channel.item[0].price_max,
+            link : result[a].channel.item[0].link
+          });
+        }
+        console.log(list);
+        Session.set('sList',list);
+      })
+    }
   },
   'click input' : function(event){
     if(event.target.checked == true){
-      price += Number(event.target.value.split(':')[1]);
+      price += Number(event.target.value.split('$')[1]);
       console.log(price);
       //check.push(event.target);
     }
     else if(!event.target.check){
-      price -= Number(event.target.value.split(':')[1]);
+      price -= Number(event.target.value.split('$')[1]);
       console.log(price);
     }
   },

@@ -1,18 +1,34 @@
 <template name="AMarket">
-    <h1>Daum Shopping Search</h1>
-    <input id="topic" type="text" placeholder="입력하세용">
-    <button id="search">검색하기</button>
+    <div class="jumbotron">
+    <!--<input id="topic" type="text" placeholder="입력하세요">-->
+    <input id="topic" type="text" class="form-control" placeholder="입력하세요">
     {{#each sList}}
-        <tr>
-            <!--// 이전페이지에서 받은 코드-->
-            <td>
-                <input type="checkbox" id="del_id" name="del_unit[]" value="{{title}},가격 : {{price_max}}">
-                {{title}}
-                <span>가격 : {{price_max}}</span>
-            </td>
-            <!--//이 체크박스가 for문에 의해서 여러개 생성-->
-        </tr>
-    {{/each}}
+    <div style="padding: 25px 0px 25px 0px;">
+        <a href="{{link}}">
+            <img style="position: absolute;" src="{{image_url}}">
+        </a>
+        <div style="display: inline-block; margin-left: 150px;">
+            <div>
+                <input type="checkbox" id="del_id" name="del_unit[]" value="{{title}} 가격 _ {{price_max}}">
+            </div>
+            <div style="font-size: 20px;">{{title}}</div>
+            <div><h4>$ : {{price}}</h4></div>
+            <div><h4>{{brand}}</h4></div>
+        </div>
+    </div>
+   {{/each}}
+    <!--{{#each sList}}-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<input type="checkbox" id="del_id" name="del_unit[]" value="{{title}} 가격 _ {{price_max}}">-->
+                <!--<a href="{{link}}">{{title}}</a>-->
+                <!--<span>가격 $ {{price_max}}</span>-->
+            <!--</td>-->
+        <!--</tr>-->
+    <!--{{/each}}-->
 
-    <button id="checkNext">확인</button>
+     <div>
+         <button type="button" id="checkNext" >check</button>
+     </div>
+    </div>
 </template>
