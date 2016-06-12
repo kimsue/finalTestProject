@@ -19,7 +19,7 @@ Template.AMarket.events({
         }
         console.log(list);
         Session.set('sList',list);
-      })
+      });
     }
   },
   'click input' : function(event){
@@ -33,7 +33,7 @@ Template.AMarket.events({
       console.log(price);
     }
   },
-  'click #checkNext' : function(){
+  'click #checkNext' : function(event){
       Session.set("price",price);
       console.log(Session.get("price"));
   }

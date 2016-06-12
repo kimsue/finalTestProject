@@ -2,14 +2,15 @@ shop = new Mongo.Collection("shop");
 
 Meteor.methods({
     getshoppingList: function (topic) {
-        var url="https://apis.daum.net/shopping/search?apikey=ca1f8881026d7bdc1fbe206dbe26b4f3&result=20&pageno=3&sort=min_price&output=json&q="+topic;
+        var apiKey = "8dbebd311d512d5defce660c929bb984";
+        var url="https://apis.daum.net/shopping/search?apikey="+ apiKey +"&result=20&pageno=3&sort=min_price&output=json&q="+topic;
         var result =HTTP.get(url).data;
         var finalObj = [];
         var data = result.channel.item;
         for(var a in data){
-            var url = "https://apis.daum.net/shopping/detail?apikey=ca1f8881026d7bdc1fbe206dbe26b4f3&docid="+ data[a].docid +"&output=json";
-            console.log(url);
-            //finalObj.push(HTTP.get(url).data);
+            var url = "https://apis.daum.net/shopping/detail?apikey="+ apiKey +"&docid="+ data[a].docid +"&output=json";
+            finalObj.push(HTTP.get(url).data);
+            console.log(finalObj);
         };
         return finalObj;
     }
