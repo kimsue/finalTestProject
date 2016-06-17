@@ -2,7 +2,7 @@ shop = new Mongo.Collection("shop");
 
 Meteor.methods({
     getshoppingList: function (topic) {
-        var apiKey = "8dbebd311d512d5defce660c929bb984";
+        var apiKey = "bfd5018b8c6cf0f3ef2c568210e30576";
         var url="https://apis.daum.net/shopping/search?apikey="+ apiKey +"&result=20&pageno=3&sort=min_price&output=json&q="+topic;
         var result =HTTP.get(url).data;
         var finalObj = [];

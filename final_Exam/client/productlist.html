@@ -1,0 +1,18 @@
+<template name="productlist">
+    <div class="jumbotron">
+        <h3 >장바구니 목록</h3>
+        <h4>주문수량: {{count}}</h4>
+        <ul>
+           {{#each productList}}
+            <li>상품명 : {{item}} : {{price}}</li>
+           {{/each}}
+        </ul>
+        <div><h4>총액: {{allPrice}}원</h4></div>
+    </div>
+
+</template>
+
+
+
+
+

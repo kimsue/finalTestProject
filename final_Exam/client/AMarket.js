@@ -1,11 +1,11 @@
 Session.setDefault('sList');
 var price = 0;
+var productList = [];
 
 Template.AMarket.events({
   'keyup #topic':function (event) {
     if(event.which == 13){
       var topic =$('#topic').val();
-      console.log(topic);
       Meteor.call('getshoppingList', topic, function (err, result) {
         var list = [];
         for(var a in result){
@@ -24,18 +24,32 @@ Template.AMarket.events({
   },
   'click input' : function(event){
     if(event.target.checked == true){
-      price += Number(event.target.value.split('$')[1]);
+      console.log(event.target.value.split('_')[0]);
+      console.log(event.target.value.split('_')[1]);
+      price += Number(event.target.value.split('_')[1]);
       console.log(price);
-      //check.push(event.target);
     }
     else if(!event.target.check){
-      price -= Number(event.target.value.split('$')[1]);
+      price -= Number(event.target.value.split('_')[1]);
       console.log(price);
     }
   },
   'click #checkNext' : function(event){
-      Session.set("price",price);
-      console.log(Session.get("price"));
+    productList = [];
+    var allPrice = 0;
+    $('input:checkbox[id="del_id"]').each(function() {
+      if(this.checked == true){ //값 비교
+        allPrice += Number(this.defaultValue.split('_')[1]);
+        productList.push({
+          item :this.defaultValue.split('_')[0],
+          price : this.defaultValue.split('_')[1]
+        });
+      }
+    });
+    console.log(productList);
+    Session.set("allPrice",allPrice);
+    Session.set('productList',productList);
+    Router.go('/productlist');
   }
 });
 Template.AMarket.helpers({
@@ -43,7 +57,7 @@ Template.AMarket.helpers({
   sList:function () {
     var list = Session.get('sList');
     for(var a in list){
-      list[a].price_max *= 100;
+      list[a].price = Number(list[a].price *= 100);
     }
     console.log(list);
     return list;

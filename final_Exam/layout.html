@@ -7,17 +7,19 @@
                     <li class="active"><a href="{{pathFor 'home'}}">Home</a></li>
                     <li><a href="{{pathFor 'productlist'}}">ProductList</a></li>
                     <li><a href="{{pathFor 'AMarket'}}">Market</a></li>
-                    <li><a href="#">About</a></li>
-
+                    <li><a href="{{pathFor 'about'}}">About</a></li>
                 </ul>
             </nav>
         </div>
-        <div style="padding: 0px;" class="jumbotron">
-            <img style="width: 100%; " src="{{src}}">
-            <div style="position: absolute; top: 120px; left: 240px;">
+        <div style="padding: 0px; background-image: url({{src}}); height: 300px;" class="jumbotron" >
+            <!--<img style="width: 100%; " src="{{src}}">-->
+            <div style="text-align: center; padding-top: 27px;">
                 <h1>Enjoy Shopping</h1>
                 <p class="lead">빠르고 편리한 쇼핑을 위하여 서비스를 제공합니다~</p>
-                <p><a class="btn btn-lg btn-success" href="http://www.gmarket.co.kr/" role="button">GMARKET</a></p>
+                <p><a class="btn btn-lg btn-success" href="http://www.gmarket.co.kr/" role="button">GMARKET</a>
+                    <a class="btn btn-lg btn-danger" href="http://www.11st.co.kr/" role="button">11ST</a>
+                    <a class="btn btn-lg btn-warning" href="http://www.auction.co.kr/‎" role="button">AUCTION</a>
+                    <a class="btn btn-lg btn-primary" href="http://www.interpark.com/‎" role="button">INTERPARK</a></p>
             </div>
         </div>
 
